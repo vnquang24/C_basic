@@ -120,9 +120,8 @@ int main(){
          char temp1 = top(root1);
         char temp2 = top(root2);
         int a = temp1 - '0' + temp2 - '0';
-        char nhap;
-        printf("%c ",nhap);
-        push(root3,nhap);
+        char b = a + '0';
+        push(root3,b);
         du = a/10; 
         root1 = pop(root1);
         root2 = pop(root2); 

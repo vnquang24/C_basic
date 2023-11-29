@@ -29,6 +29,8 @@ stack_t* push(stack_t* root,dt u){
 }
 
 stack_t* pop(stack_t* root){
+    if (root == NULL) return NULL;
+    if (root->next == NULL)
     stack_t* p_run = NULL;
     for (p_run = root; p_run->next->next != NULL; p_run = p_run->next)
     ;
@@ -115,17 +117,28 @@ int main(){
     }
     int n = sopt(root1);
     int du = 0;
-    for (int i = 0; i < n; i++)
+    int rs[n+1];
+    int a;
+    for (int i = 0; i < 3; i++)
     {
-         char temp1 = top(root1);
+        char temp1 = top(root1);
         char temp2 = top(root2);
-        int a = temp1 - '0' + temp2 - '0';
-        char b = a + '0';
-        push(root3,b);
+        a = temp1 - '0' + temp2 - '0' + du;
         du = a/10; 
+        a = a%10;
+        printf("%d",a);
+        rs[i] = a;        
         root1 = pop(root1);
         root2 = pop(root2); 
+        printf(".");
     }
+    printf("hello");
+    rs[n] = du;
+    for (int i = n+1; i > 0; i--)
+    {
+        printf("%d",rs[i]);
+    }
+    
     // print(root1); 
     // print(root2);
     return 0;

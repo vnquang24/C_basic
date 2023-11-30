@@ -4,6 +4,7 @@
         "ratio": "c",
         "array": "c",
         "string": "c",
-        "typeinfo": "c"
+        "typeinfo": "c",
+        "string.h": "c"
     }
 }

@@ -214,6 +214,40 @@ void LLsortByName(node** root) {
     } while (swapped);
 }
 
+node* swapNodes(node* root, node* node1, node* node2) {
+    if (node1 == node2) return root;
+
+    node **node1prev = NULL, **node2prev = NULL;
+    node *temp = root;
+    while (temp != NULL) {
+        if (temp->next == node1) {
+            node1prev = &(temp->next);
+        }
+        if (temp->next == node2) {
+            node2prev = &(temp->next);
+        }
+        temp = temp->next;
+    }
+
+    if (node1prev) {
+        *node1prev = node2;
+    } else {
+        root = node2;
+    }
+
+    if (node2prev) {
+        *node2prev = node1;
+    } else {
+        root = node1;
+    }
+
+    temp = node1->next;
+    node1->next = node2->next;
+    node2->next = temp;
+
+    return root;
+}
+
 void countSameScore(node* root) {
     // Sắp xếp danh sách theo điểm
     LLsort(&root);
@@ -251,6 +285,14 @@ int main(){
    // getchar(); // Đọc dấu cách cuối cùng
     LLsort(&root);
     LLsortByName(&root);
+    // Chang 1 và 3
+    // for (node* p_run = root;p_run != NULL;p_run = p_run->next)
+    // {
+    //     if (p_run->score = 1) {
+           
+    //     }
+    // }
+    
     countSameScore(root);
     LLprint(root);
     return 0;
